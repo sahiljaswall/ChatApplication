@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.time.LocalDate;
 public class MainDesktop {
     public static void main(String[] args){
         Functinality fun = new Functinality();
@@ -24,40 +25,14 @@ public class MainDesktop {
                 String phoneNumber = scanner.nextLine();
                 System.out.print("Email : ");
                 String email = scanner.nextLine();
-                String timeStamp = //
-                int reply=fun.addContact(name,phoneNumber);
-                if(reply==0) System.out.println(name+"Phone Number is Saved!");
-                else System.out.println("Contact list already contains "+name+"! Please change/update name and TRY AGAIN!");
+                String timeStamp = LocalDate.now().toString();
+                String reply=fun.addContact(name,phoneNumber,email,timeStamp);
+                System.out.println(reply);
                 scanner.nextLine();
                 break;
                 case 2:
                 fun.viewContacts();
                 scanner.nextLine();
-                while(true){
-                    System.out.println("\nManage Contacts ");
-                    System.out.println("1. Update Contact");
-                    System.out.println("2. Delete Contact");
-                    System.out.println("3. Search Contact");
-                    System.out.println("4. Go back");
-                    int contactChoice = scanner.nextInt();
-                    switch (contactChoice) {
-                        case 1:
-                            
-                            break;
-                        case 2:
-                            
-                            break;
-                        case 3:
-
-                            break;
-                        case 4:
-                            return;
-                    
-                        default:
-                            break;
-                    }
-                    
-                }
 
                 break;
                 case 3:

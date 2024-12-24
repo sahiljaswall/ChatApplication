@@ -5,7 +5,8 @@ public class Contact {
     private String timeStamp;
     public Contact(String name,String phone,String email,String timeStamp){
         this.name=name;
-        this.phone=email;
+        this.phone=phone;
+        this.email=email;
         this.timeStamp=timeStamp;
     }
 
