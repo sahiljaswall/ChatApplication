@@ -22,6 +22,9 @@ public class MainDesktop {
                 String name = scanner.nextLine();
                 System.out.print("Phone Number : ");
                 String phoneNumber = scanner.nextLine();
+                System.out.print("Email : ");
+                String email = scanner.nextLine();
+                String timeStamp = //
                 int reply=fun.addContact(name,phoneNumber);
                 if(reply==0) System.out.println(name+"Phone Number is Saved!");
                 else System.out.println("Contact list already contains "+name+"! Please change/update name and TRY AGAIN!");
