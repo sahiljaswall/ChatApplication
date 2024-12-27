@@ -1,9 +1,12 @@
-import java.util.HashMap;;
-public class Functinality extends Contact{
-    public Functinality() {
-        super(null, null, null, null); // Call the superclass constructor
-    }
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Stack;;
+public class Functinality{
     HashMap<String,Contact> contactList = new HashMap<>();
+    Stack<Contact> st=new Stack<>();
+    //Contact undo;
+    Scanner scanner=new Scanner(System.in);
     //Function to Add Contacts
     public String addContact(String name,String phone,String email, String timeStamp){
         if(contactList.containsKey(name)) return "Contact list already contains "+name+"! Please change/update name and TRY AGAIN!";
@@ -13,7 +16,7 @@ public class Functinality extends Contact{
         return "Phone Number is Saved!";
     }
     public void viewContacts(){
-        if(contactList.isEmpty()) System.err.println("No Contacts");
+        if(contactList.isEmpty()) System.out.println("No Contacts");
         System.out.println("Name -----> Phone Number----->email----->----->Last Updated");
         contactList.forEach((name,contact)->{
             
@@ -21,5 +24,37 @@ public class Functinality extends Contact{
             
         });
     }
-    
+    public String manageContact(String name){
+        if(!contactList.containsKey(name)) return "No Contact Found";
+        deleteContact(name);
+        return viewAddContacts();
+    }
+    public String deleteContact(String name){
+        if(!contactList.containsKey(name))  System.out.println("Contact Not Found");
+        undo=contactList.get(name);
+        st.push(contactList.get(name));
+        contactList.remove(name);
+        return(name+"'s Contact is deleted");
+
+    }
+    public String viewAddContacts(){
+        System.out.println("1. Add Contact");
+        System.out.print("Name : ");
+        String name = scanner.nextLine();
+        System.out.print("Phone Number : ");
+        String phoneNumber = scanner.nextLine();
+        System.out.print("Email : ");
+        String email = scanner.nextLine();
+        String timeStamp = LocalDate.now().toString();
+        return addContact(name,phoneNumber,email,timeStamp);
+        
+    }
+    public String undoDelete(){
+        if(st.isEmpty()) return "Nothing Avaiable to UNDO";
+        //contactList.remove(undo.getName());
+        contactList.put(st.peek().getName(),st.peek());
+        st.clear();
+        return("Contact is added back");
+
+    }
 }

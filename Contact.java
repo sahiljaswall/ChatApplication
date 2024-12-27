@@ -11,7 +11,7 @@ public class Contact {
     }
 
     public String getName(){
-        return name.toUpperCase();
+        return name.substring(0,1).toUpperCase()+name.substring(1,name.length()).toLowerCase();
     }
     public void setName(String name){
         this.name= name;
@@ -33,9 +33,5 @@ public class Contact {
     }
     public void setTimeStamp(String timeStamp){
         this.timeStamp=timeStamp;
-    }
-    
-    
-
-    
+    }   
 }

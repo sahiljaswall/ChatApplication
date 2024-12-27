@@ -1,9 +1,9 @@
 import java.util.Scanner;
-import java.time.LocalDate;
 public class MainDesktop {
     public static void main(String[] args){
         Functinality fun = new Functinality();
         Scanner scanner = new Scanner(System.in);
+        String name;
         while(true){
             System.out.println("\n\nWelcome to Real-Time Chat Application");
             System.out.println("1. Add Contact");
@@ -18,22 +18,40 @@ public class MainDesktop {
             scanner.nextLine();
             switch(choice){
                 case 1:
-                System.out.println("1. Add Contact");
-                System.out.print("Name : ");
-                String name = scanner.nextLine();
-                System.out.print("Phone Number : ");
-                String phoneNumber = scanner.nextLine();
-                System.out.print("Email : ");
-                String email = scanner.nextLine();
-                String timeStamp = LocalDate.now().toString();
-                String reply=fun.addContact(name,phoneNumber,email,timeStamp);
-                System.out.println(reply);
+                System.out.println(fun.viewAddContacts());
                 scanner.nextLine();
                 break;
                 case 2:
                 fun.viewContacts();
-                scanner.nextLine();
-
+                System.out.println("\nManage Contacts\n");
+                System.out.println("1. Update Contact");
+                System.out.println("2. Remove Contact");
+                System.out.println("3. Undo last deleted Contact");
+                System.out.println("4. Press enter to return");
+                int contactChoice=scanner.nextInt();
+                switch(contactChoice){
+                    case 1:
+                    fun.viewContacts();
+                    System.out.println("\nWhich Contact you want to update ? ");
+                    scanner.nextLine();
+                    name=scanner.nextLine();
+                    System.out.println(fun.manageContact(name));
+                    break;
+                    case 2:
+                    System.out.println("\nWhich Contact you want to delete ? ");
+                    scanner.nextLine();
+                    name=scanner.nextLine();
+                    System.out.println(fun.deleteContact(name));
+                    scanner.nextLine();
+                    case 3:
+                    System.out.println(fun.undoDelete());
+                    scanner.nextLine();
+                    break;
+                    case 4:
+                    break;
+                    default:
+                    System.out.println("Invalid option");
+                }
                 break;
                 case 3:
                 break;
@@ -49,7 +67,6 @@ public class MainDesktop {
                 return;
                 default:
                 System.out.println("Invalid option");
-                break;
             }
 
 
