@@ -1,11 +1,13 @@
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Stack;;
+import java.util.Stack;
+import java.util.LinkedList;
 public class Functinality{
     HashMap<String,Contact> contactList = new HashMap<>();
     Stack<Contact> st=new Stack<>();
-    //Contact undo;
+    Contact me=new Contact("Sahil Jaswal","987612XXXX","sahiljaswal3@gmail.com","10/04/2025");
+    LinkedList<Message> conversation=new LinkedList<>();
     Scanner scanner=new Scanner(System.in);
     //Function to Add Contacts
     public String addContact(String name,String phone,String email, String timeStamp){
@@ -15,6 +17,7 @@ public class Functinality{
         contactList.put(name,new Contact(name,phone,email,timeStamp));
         return "Phone Number is Saved!";
     }
+    //Function to View Contacts
     public void viewContacts(){
         if(contactList.isEmpty()) System.out.println("No Contacts");
         System.out.println("Name -----> Phone Number----->email----->----->Last Updated");
@@ -24,19 +27,21 @@ public class Functinality{
             
         });
     }
+    //Update Contact
     public String manageContact(String name){
         if(!contactList.containsKey(name)) return "No Contact Found";
         deleteContact(name);
         return viewAddContacts();
     }
+    //Delete Contact
     public String deleteContact(String name){
         if(!contactList.containsKey(name))  System.out.println("Contact Not Found");
-        undo=contactList.get(name);
         st.push(contactList.get(name));
         contactList.remove(name);
         return(name+"'s Contact is deleted");
 
     }
+    //View Page
     public String viewAddContacts(){
         System.out.println("1. Add Contact");
         System.out.print("Name : ");
@@ -49,6 +54,7 @@ public class Functinality{
         return addContact(name,phoneNumber,email,timeStamp);
         
     }
+    //UNDO Funtion
     public String undoDelete(){
         if(st.isEmpty()) return "Nothing Avaiable to UNDO";
         //contactList.remove(undo.getName());
@@ -57,4 +63,18 @@ public class Functinality{
         return("Contact is added back");
 
     }
+    public String sendMessage(){
+        System.out.println("Add Contact Name: ");
+        String name =scanner.nextLine();
+        if(!contactList.containsKey(name))  System.out.println("Contact Not Found");
+        System.out.println("Enter your text: ");
+        String message = scanner.nextLine();
+        String timeStamp = LocalDate.now().toString();//edit the date and time
+        conversation.offer(new Message(message,contactList.get(name),me,timeStamp));
+        return "Message sent";
+    }
+    public String autoReplyMachine(){
+        
+    }
+    
 }

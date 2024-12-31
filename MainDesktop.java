@@ -54,6 +54,7 @@ public class MainDesktop {
                 }
                 break;
                 case 3:
+                System.out.println(fun.sendMessage());
                 break;
                 case 4:
                 break;
