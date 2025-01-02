@@ -1,7 +1,8 @@
 import java.util.Scanner;
 public class MainDesktop {
     public static void main(String[] args){
-        Functinality fun = new Functinality();
+        //Functinality fun = new Functinality();
+        chatManagement manager=new chatManagement();
         Scanner scanner = new Scanner(System.in);
         String name;
         while(true){
@@ -18,11 +19,11 @@ public class MainDesktop {
             scanner.nextLine();
             switch(choice){
                 case 1:
-                System.out.println(fun.viewAddContacts());
+                System.out.println(manager.viewAddContacts());
                 scanner.nextLine();
                 break;
                 case 2:
-                fun.viewContacts();
+                manager.viewContacts();
                 System.out.println("\nManage Contacts\n");
                 System.out.println("1. Update Contact");
                 System.out.println("2. Remove Contact");
@@ -31,20 +32,20 @@ public class MainDesktop {
                 int contactChoice=scanner.nextInt();
                 switch(contactChoice){
                     case 1:
-                    fun.viewContacts();
+                    manager.viewContacts();
                     System.out.println("\nWhich Contact you want to update ? ");
                     scanner.nextLine();
                     name=scanner.nextLine();
-                    System.out.println(fun.manageContact(name));
+                    System.out.println(manager.manageContact(name));
                     break;
                     case 2:
                     System.out.println("\nWhich Contact you want to delete ? ");
                     scanner.nextLine();
                     name=scanner.nextLine();
-                    System.out.println(fun.deleteContact(name));
+                    System.out.println(manager.deleteContact(name));
                     scanner.nextLine();
                     case 3:
-                    System.out.println(fun.undoDelete());
+                    System.out.println(manager.undoDelete());
                     scanner.nextLine();
                     break;
                     case 4:
@@ -54,9 +55,10 @@ public class MainDesktop {
                 }
                 break;
                 case 3:
-                System.out.println(fun.sendMessage());
+                System.out.println(manager.sendMessage());
                 break;
                 case 4:
+                System.out.println(manager.viewConversation());
                 break;
                 case 5:
                 break;
@@ -69,8 +71,6 @@ public class MainDesktop {
                 default:
                 System.out.println("Invalid option");
             }
-
-
         }
     }
     

@@ -2,12 +2,9 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.LinkedList;
 public class Functinality{
-    HashMap<String,Contact> contactList = new HashMap<>();
+    public HashMap<String,Contact> contactList = new HashMap<>();
     Stack<Contact> st=new Stack<>();
-    Contact me=new Contact("Sahil Jaswal","987612XXXX","sahiljaswal3@gmail.com","10/04/2025");
-    LinkedList<Message> conversation=new LinkedList<>();
     Scanner scanner=new Scanner(System.in);
     //Function to Add Contacts
     public String addContact(String name,String phone,String email, String timeStamp){
@@ -26,6 +23,11 @@ public class Functinality{
             System.out.println(contact.getName()+"----->"+contact.getPhone()+"----->"+contact.getEmail()+"----->"+contact.getTimeStamp());
             
         });
+    }
+    //Authenticate contact
+    public String checkContactList(String name){
+        if(!contactList.containsKey(name))  return "Contact Not Found";
+        return name+" Conversation Opened[_]:";
     }
     //Update Contact
     public String manageContact(String name){
@@ -62,19 +64,6 @@ public class Functinality{
         st.clear();
         return("Contact is added back");
 
-    }
-    public String sendMessage(){
-        System.out.println("Add Contact Name: ");
-        String name =scanner.nextLine();
-        if(!contactList.containsKey(name))  System.out.println("Contact Not Found");
-        System.out.println("Enter your text: ");
-        String message = scanner.nextLine();
-        String timeStamp = LocalDate.now().toString();//edit the date and time
-        conversation.offer(new Message(message,contactList.get(name),me,timeStamp));
-        return "Message sent";
-    }
-    public String autoReplyMachine(){
-        
     }
     
 }

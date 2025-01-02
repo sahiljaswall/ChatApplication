@@ -3,7 +3,7 @@ public class Message{
     private Contact sender;
     private Contact receiver;
     private String timing;
-    public Message(String text,Contact sender,Contact receiver,String timing){
+    public Message(String text,Contact receiver,Contact sender,String timing){
         this.text=text;
         this.sender=sender;
         this.receiver=receiver;
@@ -16,13 +16,13 @@ public class Message{
         this.text=text;
     }
     public String getSender(){
-        return sender.getName();
+        return sender != null ? sender.getName() : "Unknown Sender";
     }
     public void setSender(Contact sender){
         this.sender=sender;
     }
     public String getReceiver(){
-        return receiver.getName();
+        return receiver != null ? receiver.getName() : "Unknown Receiver";
     }
     public void setReceiver(Contact receiver){
         this.receiver=receiver;
@@ -32,5 +32,9 @@ public class Message{
     }
     public void setTiming(String timing){
         this.timing=timing;
+    }
+    @Override
+    public String toString() {
+        return "Sent to: " + getReceiver() + "\nMessage: " + getText() +"\n\nSender: " + getSender() + "\n Time: " + getTiming();
     }
 }
