@@ -1,7 +1,6 @@
 import java.util.Scanner;
 public class MainDesktop {
     public static void main(String[] args){
-        //Functinality fun = new Functinality();
         chatManagement manager=new chatManagement();
         Scanner scanner = new Scanner(System.in);
         String name;
@@ -59,6 +58,9 @@ public class MainDesktop {
                 break;
                 case 4:
                 System.out.println(manager.viewConversation());
+                System.out.println("\nWhich Conversation you want open? ");
+                name=scanner.nextLine();
+                System.out.println(manager.openConversation(name));
                 break;
                 case 5:
                 break;
