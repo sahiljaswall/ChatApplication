@@ -5,6 +5,7 @@ public class MainDesktop {
         Scanner scanner = new Scanner(System.in);
         String name;
         while(true){
+            if(manager.notify.getNotify()) System.out.println("\\u001B[31mCHECK MESSAGES : YOU HAVE NOTIFICATION FROM "+manager.notify.getName()+"\\u001B[0m");
             System.out.println("\n\nWelcome to Real-Time Chat Application");
             System.out.println("1. Add Contact");
             System.out.println("2. View/Manage Contacts");
@@ -61,6 +62,7 @@ public class MainDesktop {
                 System.out.println("\nWhich Conversation you want open? ");
                 name=scanner.nextLine();
                 System.out.println(manager.openConversation(name));
+                scanner.nextLine();
                 break;
                 case 5:
                 break;

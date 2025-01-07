@@ -35,6 +35,6 @@ public class Message{
     }
     @Override
     public String toString() {
-        return "Sent to: " + getReceiver() + "\nMessage: " + getText() +"\n\nSender: " + getSender() + "\n Time: " + getTiming();
+        return "\n\nSent to: " + getReceiver() + "\nMessage: " + getText() +"\nSender: " + getSender() + "\n Time: " + getTiming();
     }
 }
